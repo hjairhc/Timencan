@@ -18,7 +18,8 @@ def tick():
 
 def days():
 	days = Tkinter.Toplevel(root)
-	root.iconify()
+	days.geometry("340x500")
+	#root.iconify()
 	DAYS = [
     		"Lunes",
     		"Martes",
@@ -45,6 +46,8 @@ def days():
 	w2 = apply(OptionMenu, (days, variable2) + tuple(HOURS))
 	w.pack()
 	w2.pack()
+	root.deiconify()
+	
 #	days.parent=days
 #	days.parent.protocol("WM_DELETE_WINDOW", upRoot)
 
@@ -54,8 +57,11 @@ def upRoot():
 #Main
 root=Tk()
 root.title('Timencan')
+root.geometry("340x500")
 btn1 = Button(root, text="Agregar horario", command = days)
-
+btn2 = Button(root, text="Ver mis horarios")
+#imagen=PhotoImage(file="clockT")
+#fondo=Label(root, image=imagen).place(x=0, y=0)
 time1 = ''
 clock = Label(root, font=('times', 35, 'bold'), bg='white')
 clock.pack()
@@ -67,4 +73,5 @@ tick()
 test()
 
 btn1.pack()
+btn2.pack()
 mainloop()
