@@ -16,10 +16,10 @@ def tick():
         clock.config(text=time2)
     clock.after(200, tick)
 
-def days():
-	days = Tkinter.Toplevel(root)
-	days.geometry("340x500")
-	#root.iconify()
+def alarm():
+	alarm = Tkinter.Toplevel(root)
+	alarm.geometry("340x530")
+
 	DAYS = [
     		"Lunes",
     		"Martes",
@@ -42,14 +42,15 @@ def days():
 	variable2 = StringVar(root)
 	variable.set(DAYS[0])
 	variable2.set(HOURS[0])
-	w = apply(OptionMenu, (days, variable) + tuple(DAYS))
-	w2 = apply(OptionMenu, (days, variable2) + tuple(HOURS))
+	w = apply(OptionMenu, (alarm, variable) + tuple(DAYS))
+	w2 = apply(OptionMenu, (alarm, variable2) + tuple(HOURS))
 	w.pack()
 	w2.pack()
-	root.deiconify()
 	
-#	days.parent=days
-#	days.parent.protocol("WM_DELETE_WINDOW", upRoot)
+
+def days():
+	days = Tkinter.Toplevel(root)
+	days.geometry("340x530")
 
 def upRoot():
 	root.deiconify()
@@ -57,21 +58,24 @@ def upRoot():
 #Main
 root=Tk()
 root.title('Timencan')
-root.geometry("340x500")
-btn1 = Button(root, text="Agregar horario", command = days)
-btn2 = Button(root, text="Ver mis horarios")
-#imagen=PhotoImage(file="clockT")
-#fondo=Label(root, image=imagen).place(x=0, y=0)
+root.geometry("340x530")
+#root.wm_attributes("-topmost", 1)
+
 time1 = ''
+Label(root, text="Actual Hour", fg="blue", pady= 10).pack()
 clock = Label(root, font=('times', 35, 'bold'), bg='white')
 clock.pack()
 
 #Call the clock
 tick()
-
+Label(root, text="___________________________________________", fg="black", pady=5).pack()
+Label(root, text="Calendar", fg="blue", pady= 10).pack()
 #Call calendar widget in cal.py
 test()
+Label(root, text="___________________________________________", fg="black", pady=5).pack()
+Label(root, text="Options", fg="blue", pady= 10).pack()
+btn1 = Button(root, text="Reprogramar pastillero", command = days).pack()
+btn2 = Button(root, text="      Agregar alarma      ", command = alarm).pack()
+btn3 = Button(root, text="      Ver mis horarios     ").pack()
 
-btn1.pack()
-btn2.pack()
 mainloop()
