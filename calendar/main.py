@@ -20,6 +20,7 @@ def alarm():
 	alarm = Tkinter.Toplevel(root)
 	alarm.geometry("340x530")
 	alarm.geometry("+%d+%d" % (0,0))
+	alarm.overrideredirect(1)
 	Label(alarm, text="Programar alarma", font=("bold", 12, ), fg="blue", pady= 10).pack()
 	Label(alarm, text="Selecciona dia, hora y compartimiento.", pady= 10).pack()
 
@@ -71,6 +72,7 @@ def days():
 	days = Tkinter.Toplevel(root)
 	days.geometry("340x530")
 	days.geometry("+%d+%d" % (0,0))
+	days.overrideredirect(1)
 	Label(days, text="Reprogramar Pastillero", font=("bold", 12, ), fg="blue", pady= 10).pack()
 	Label(days, text="Selecciona uno de los 5 compartimientos", pady= 10).pack()
 	btn1 = Button(days, text="Compartimiento 1", fg="white", bg="green3", pady="25", command = c1).pack()
@@ -85,6 +87,7 @@ def c1():
 	c1= Tkinter.Toplevel(root)
 	c1.geometry("340x530")
 	c1.geometry("+%d+%d" % (0,0))
+	c1.overrideredirect(1)
 	Label(c1, text="___________________________________________", fg="black", pady=10).pack()
 	salir = Button(c1, text="Regresar", fg="white", bg="blue", command= lambda: exitFunction(c1)).pack()
 
@@ -92,6 +95,7 @@ def c2():
 	c2= Tkinter.Toplevel(root)
 	c2.geometry("340x530")
 	c2.geometry("+%d+%d" % (0,0))
+	c2.overrideredirect(1)
 	Label(c2, text="___________________________________________", fg="black", pady=10).pack()
 	salir = Button(c2, text="Regresar", fg="white", bg="blue", command= lambda: exitFunction(c2)).pack()
 
@@ -99,6 +103,7 @@ def c3():
 	c3= Tkinter.Toplevel(root)
 	c3.geometry("340x530")
 	c3.geometry("+%d+%d" % (0,0))
+	c3.overrideredirect(1)
 	Label(c3, text="___________________________________________", fg="black", pady=10).pack()
 	salir = Button(c3, text="Regresar", fg="white", bg="blue", command= lambda: exitFunction(c3)).pack()
 
@@ -106,6 +111,7 @@ def c4():
 	c4= Tkinter.Toplevel(root)
 	c4.geometry("340x530")
 	c4.geometry("+%d+%d" % (0,0))
+	c4.overrideredirect(1)
 	Label(c4, text="___________________________________________", fg="black", pady=10).pack()
 	salir = Button(c4, text="Regresar", fg="white", bg="blue", command= lambda: exitFunction(c4)).pack()
 
@@ -113,6 +119,7 @@ def c5():
 	c5= Tkinter.Toplevel(root)
 	c5.geometry("340x530")
 	c5.geometry("+%d+%d" % (0,0))
+	c5.overrideredirect(1)
 	Label(c5, text="___________________________________________", fg="black", pady=10).pack()
 	salir = Button(c5, text="Regresar", fg="white", bg="blue", command= lambda: exitFunction(c5)).pack()
 
@@ -125,6 +132,7 @@ root=Tk()
 root.title('Timencan')
 root.geometry("340x530")
 root.geometry("+%d+%d" % (0,0))
+root.overrideredirect(1)
 #root.wm_attributes("-topmost", 1)
 
 time1 = ''
