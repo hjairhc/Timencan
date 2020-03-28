@@ -92,7 +92,7 @@ def c1():
 	variable = StringVar(c1)
 	variable.set(NUM[0])
 	w = apply(OptionMenu, (c1, variable) + tuple(NUM)).pack()
-	Label(c1, text="Cantidad de pastillas.", fg="black", pady=10).pack()
+	Label(c1, text="Cantidad de pastillas a tomar.", fg="black", pady=10).pack()
 	CAN = ["1", "2", "3", "4", "5"]
 	cantidad = StringVar(c1)
 	cantidad.set(CAN[0])
@@ -120,7 +120,7 @@ def c2():
 	variable = StringVar(c2)
 	variable.set(NUM[0])
 	w = apply(OptionMenu, (c2, variable) + tuple(NUM)).pack()
-	Label(c2, text="Cantidad de pastillas.", fg="black", pady=10).pack()
+	Label(c2, text="Cantidad de pastillas a tomar.", fg="black", pady=10).pack()
 	CAN = ["1", "2", "3", "4", "5"]
 	cantidad = StringVar(c2)
 	cantidad.set(CAN[0])
@@ -148,7 +148,7 @@ def c3():
 	variable = StringVar(c3)
 	variable.set(NUM[0])
 	w = apply(OptionMenu, (c3, variable) + tuple(NUM)).pack()
-	Label(c3, text="Cantidad de pastillas.", fg="black", pady=10).pack()
+	Label(c3, text="Cantidad de pastillas a tomar.", fg="black", pady=10).pack()
 	CAN = ["1", "2", "3", "4", "5"]
 	cantidad = StringVar(c3)
 	cantidad.set(CAN[0])
@@ -176,7 +176,7 @@ def c4():
 	variable = StringVar(c4)
 	variable.set(NUM[0])
 	w = apply(OptionMenu, (c4, variable) + tuple(NUM)).pack()
-	Label(c4, text="Cantidad de pastillas.", fg="black", pady=10).pack()
+	Label(c4, text="Cantidad de pastillas a tomar.", fg="black", pady=10).pack()
 	CAN = ["1", "2", "3", "4", "5"]
 	cantidad = StringVar(c4)
 	cantidad.set(CAN[0])
@@ -202,7 +202,7 @@ def c5():
 	variable = StringVar(c5)
 	variable.set(NUM[0])
 	w = apply(OptionMenu, (c5, variable) + tuple(NUM)).pack()
-	Label(c5, text="Cantidad de pastillas.", fg="black", pady=10).pack()
+	Label(c5, text="Cantidad de pastillas a tomar.", fg="black", pady=10).pack()
 	CAN = ["1", "2", "3", "4", "5"]
 	cantidad = StringVar(c5)
 	cantidad.set(CAN[0])
@@ -221,6 +221,7 @@ def saveComp(self, compartimiento, medicamento, hora, cant):
 	print "med: " + medicamento
 	print "Hora: " + hora	
 	print "Cantidad: " + cant
+	writeFile(compartimiento, medicamento, hora, cant)
 	self.destroy()
 
 def saveAlarm(self, dia, hora, c1, c2, c3, c4, c5):
@@ -232,7 +233,26 @@ def saveAlarm(self, dia, hora, c1, c2, c3, c4, c5):
 	print "C5: %d" %(c5)
 	print "Dia: " + dia
 	print "Hora: " + hora	
+	writeAlarm(dia, hora, c1, c2, c3, c4, c5)
 	self.destroy()
+
+def writeFile(comp, med, hora, cant):
+	lineas = [med, hora, cant]
+	dirFichero='c%d.txt' %comp
+	fichero = open(dirFichero, 'w')	
+	for l in lineas:
+		fichero.write(l+"\n")
+	fichero.close() 
+
+def writeAlarm(dia, hora, c1, c2, c3, c4, c5):	
+	lineas = [dia, hora, str(c1), str(c2), str(c3), str(c4), str(c5)]
+	dirFichero='alarmas.txt'
+	fichero = open(dirFichero, 'a+')	
+	for l in lineas:
+		fichero.write(l+"\n")
+	fichero.write("\n")
+	fichero.close() 
+		
 
 
 
@@ -241,7 +261,7 @@ root=Tk()
 root.title('Timencan')
 root.geometry("340x530")
 root.geometry("+%d+%d" % (0,0))
-root.overrideredirect(1)
+#root.overrideredirect(1)
 #root.wm_attributes("-topmost", 1)
 
 time1 = ''
