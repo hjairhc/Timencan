@@ -76,7 +76,7 @@ def horarios():
 	horarios= Tkinter.Toplevel(root)
 	horarios.geometry("340x530")
 	horarios.geometry("+%d+%d" % (0,0))
-	c5.overrideredirect(1)
+	horarios.overrideredirect(1)
 	Label(horarios, text="Horarios", font=("bold", 12, ), fg="blue", pady= 10).pack()
 	Label(horarios, text="Compartimiento 1", font=("bold", 10, ), fg="blue", pady= 5).pack()
 	f = open ('c1.txt','r')
