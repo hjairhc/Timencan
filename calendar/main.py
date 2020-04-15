@@ -22,7 +22,7 @@ def alarm():
 	alarm = Tkinter.Toplevel(root)
 	alarm.geometry("340x530")
 	alarm.geometry("+%d+%d" % (0,0))
-	#alarm.overrideredirect(1)
+	alarm.overrideredirect(1)
 	Label(alarm, text="Programar alarma", font=("bold", 12, ), fg="blue", pady= 10).pack()
 	Label(alarm, text="Selecciona dia.", pady= 6).pack()
 
@@ -44,11 +44,11 @@ def alarm():
 	cv4 = IntVar()
 	cv5 = IntVar()
 	Label(alarm, text="Selecciona compartimiento.", pady= 6).pack()
-	c1 = Checkbutton(alarm, text = "Compartimiento 1", variable = cv1, onvalue = 1, offvalue = 0, height=2, bg="green3", fg="cyan").pack()
-	c2 = Checkbutton(alarm, text = "Compartimiento 2", variable = cv2, onvalue = 1, offvalue = 0, height=2, bg="deep sky blue", fg="cyan").pack()
-	c3 = Checkbutton(alarm, text = "Compartimiento 3", variable = cv3, onvalue = 1, offvalue = 0, height=2, bg="red", fg="cyan").pack()
-	c4 = Checkbutton(alarm, text = "Compartimiento 4", variable = cv4, onvalue = 1, offvalue = 0, height=2, bg="blue violet", fg="cyan").pack()
-	c5 = Checkbutton(alarm, text = "Compartimiento 5", variable = cv5, onvalue = 1, offvalue = 0, height=2, bg="black", fg="cyan").pack()
+	c1 = Checkbutton(alarm, text = "Compartimiento 1", variable = cv1, onvalue = 1, offvalue = 0, height=2, bg="green3", fg="gray").pack()
+	c2 = Checkbutton(alarm, text = "Compartimiento 2", variable = cv2, onvalue = 1, offvalue = 0, height=2, bg="deep sky blue", fg="gray").pack()
+	c3 = Checkbutton(alarm, text = "Compartimiento 3", variable = cv3, onvalue = 1, offvalue = 0, height=2, bg="red", fg="gray").pack()
+	c4 = Checkbutton(alarm, text = "Compartimiento 4", variable = cv4, onvalue = 1, offvalue = 0, height=2, bg="blue violet", fg="gray").pack()
+	c5 = Checkbutton(alarm, text = "Compartimiento 5", variable = cv5, onvalue = 1, offvalue = 0, height=2, bg="black", fg="gray").pack()
 
 	Label(alarm, text="", fg="black", pady=0).pack() 
 	guardar = Button(alarm, text="Guardar alarma", fg="white", bg="blue", command= lambda: saveAlarm(alarm, variable.get(), variable2.get(), cv1.get(), cv2.get(), cv3.get(), cv4.get(), cv5.get())).pack()
@@ -61,7 +61,7 @@ def days():
 	days = Tkinter.Toplevel(root)
 	days.geometry("340x530")
 	days.geometry("+%d+%d" % (0,0))
-	#days.overrideredirect(1)
+	days.overrideredirect(1)
 	Label(days, text="Reprogramar Pastillero", font=("bold", 12, ), fg="blue", pady= 10).pack()
 	Label(days, text="Selecciona uno de los 5 compartimientos", pady= 10).pack()
 	btn1 = Button(days, text="Compartimiento 1", fg="white", bg="green3", pady="25", command = c1).pack()
@@ -76,7 +76,7 @@ def horarios():
 	horarios= Tkinter.Toplevel(root)
 	horarios.geometry("340x530")
 	horarios.geometry("+%d+%d" % (0,0))
-	#c5.overrideredirect(1)
+	c5.overrideredirect(1)
 	Label(horarios, text="Horarios", font=("bold", 12, ), fg="blue", pady= 10).pack()
 	Label(horarios, text="Compartimiento 1", font=("bold", 10, ), fg="blue", pady= 5).pack()
 	f = open ('c1.txt','r')
@@ -155,7 +155,7 @@ def c1():
 	c1= Tkinter.Toplevel(root)
 	c1.geometry("340x530")
 	c1.geometry("+%d+%d" % (0,0))
-	#c1.overrideredirect(1)
+	c1.overrideredirect(1)
 	Label(c1, text="Compartimiento 1", font=("bold", 12, ), fg="blue", pady= 10).pack()
 	Label(c1, text="Llena los datos para programar los horarios.", pady= 10).pack()
 	Label(c1, text=" ", fg="black", pady=10).pack()
@@ -183,7 +183,7 @@ def c2():
 	c2= Tkinter.Toplevel(root)
 	c2.geometry("340x530")
 	c2.geometry("+%d+%d" % (0,0))
-	#c2.overrideredirect(1)
+	c2.overrideredirect(1)
 	Label(c2, text="Compartimiento 2", font=("bold", 12, ), fg="blue", pady= 10).pack()
 	Label(c2, text="Llena los datos para programar los horarios.", pady= 10).pack()
 	Label(c2, text=" ", fg="black", pady=10).pack()
@@ -211,7 +211,7 @@ def c3():
 	c3= Tkinter.Toplevel(root)
 	c3.geometry("340x530")
 	c3.geometry("+%d+%d" % (0,0))
-	#c3.overrideredirect(1)
+	c3.overrideredirect(1)
 	Label(c3, text="Compartimiento 3", font=("bold", 12, ), fg="blue", pady= 10).pack()
 	Label(c3, text="Llena los datos para programar los horarios.", pady= 10).pack()
 	Label(c3, text=" ", fg="black", pady=10).pack()
@@ -239,7 +239,7 @@ def c4():
 	c4= Tkinter.Toplevel(root)
 	c4.geometry("340x530")
 	c4.geometry("+%d+%d" % (0,0))
-	#c4.overrideredirect(1)
+	c4.overrideredirect(1)
 	Label(c4, text="Compartimiento 4", font=("bold", 12, ), fg="blue", pady= 10).pack()
 	Label(c4, text="Llena los datos para programar los horarios.", pady= 10).pack()
 	Label(c4, text=" ", fg="black", pady=10).pack()
@@ -267,7 +267,7 @@ def c5():
 	c5= Tkinter.Toplevel(root)
 	c5.geometry("340x530")
 	c5.geometry("+%d+%d" % (0,0))
-	#c5.overrideredirect(1)
+	c5.overrideredirect(1)
 	Label(c5, text="Compartimiento 5", font=("bold", 12, ), fg="blue", pady= 10).pack()
 	Label(c5, text="Llena los datos para programar los horarios.", pady= 10).pack()
 	Label(c5, text=" ", fg="black", pady=10).pack()
@@ -293,25 +293,21 @@ def exitFunction(self):
 	self.destroy()
 
 def saveComp(self, compartimiento, medicamento, hora, cant):
-	#tkMessageBox.showinfo("Timencan", "Guardar")
-	#print "Comp: %d" %(compartimiento)
-	#print "med: " + medicamento
-	#print "Hora: " + hora	
-	#print "Cantidad: " + cant
+	conf= Tkinter.Toplevel(root)
+	conf.geometry("340x530")
+	conf.geometry("+%d+%d" % (0,0))
+	conf.overrideredirect(1)
+	conf.wm_attributes("-topmost", 1)	
+	Label(conf, text="\n\n\n\n\n\n\n\n\n\nGuardar los cambios", fg="black", pady=10).pack()
+	conf.wm_attributes("-topmost", 1)
+	confirmar = Button(conf, text="Confirmar", fg="white", bg="blue", pady="15", command =lambda: escribirYCerrar(self, conf, compartimiento, medicamento, hora, cant)).pack()
+	cancelar = Button(conf, text="Cancelar", fg="white", bg="blue", pady="15", command=lambda: exitFunction(conf)).pack()	
+	
+
+def escribirYCerrar(conf, self, compartimiento, medicamento, hora, cant):
 	writeFile(compartimiento, medicamento, hora, cant)
 	self.destroy()
-
-def saveAlarm(self, dia, hora, c1, c2, c3, c4, c5):
-	#tkMessageBox.showinfo("Timencan", "Guardar")
-	print "C1: %d" %(c1)
-	print "C2: %d" %(c2)
-	print "C3: %d" %(c3)
-	print "C4: %d" %(c4)
-	print "C5: %d" %(c5)
-	print "Dia: " + dia
-	print "Hora: " + hora	
-	writeAlarm(dia, hora, c1, c2, c3, c4, c5)
-	self.destroy()
+	conf.destroy()	
 
 def writeFile(comp, med, hora, cant):
 	lineas = [med, hora, cant]
@@ -320,6 +316,22 @@ def writeFile(comp, med, hora, cant):
 	for l in lineas:
 		fichero.write(l+"\n")
 	fichero.close() 
+
+def saveAlarm(self, dia, hora, c1, c2, c3, c4, c5):
+	conf= Tkinter.Toplevel(root)
+	conf.geometry("340x530")
+	conf.geometry("+%d+%d" % (0,0))
+	conf.overrideredirect(1)
+	conf.wm_attributes("-topmost", 1)
+	Label(conf, text="\n\n\n\n\n\n\n\n\n\nGuardar los cambios", fg="black", pady=10).pack()
+	conf.wm_attributes("-topmost", 1)
+	confirmar = Button(conf, text="Confirmar", fg="white", bg="blue", pady="15", command =lambda: escribirAlarma(self, conf, dia, hora, c1, c2, c3, c4, c5)).pack()
+	cancelar = Button(conf, text="Cancelar", fg="white", bg="blue", pady="15", command=lambda: exitFunction(conf)).pack()	
+
+def escribirAlarma(conf, self, dia, hora, c1, c2, c3, c4, c5):
+	writeAlarm(dia, hora, c1, c2, c3, c4, c5)
+	self.destroy()
+	conf.destroy()
 
 def writeAlarm(dia, hora, c1, c2, c3, c4, c5):	
 	lineas = [dia, hora, str(c1), str(c2), str(c3), str(c4), str(c5)]
@@ -331,8 +343,6 @@ def writeAlarm(dia, hora, c1, c2, c3, c4, c5):
 	fichero.close() 
 		
 
-
-
 #Main
 root=Tk()
 root.title('Timencan')
@@ -340,7 +350,6 @@ root.geometry("340x530")
 root.geometry("+%d+%d" % (0,0))
 #root.overrideredirect(1)
 #root.wm_attributes("-topmost", 1)
-
 time1 = ''
 Label(root, text="Hora actual", fg="blue", font=("bold", 12), pady= 5).pack()
 clock = Label(root, font=('times', 35, 'bold'), bg='white')
