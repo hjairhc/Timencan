@@ -5,6 +5,7 @@ from Tkinter import *
 from tkMessageBox import *
 import tkMessageBox
 import time
+from threading import Timer
 import os
 
 #Function for the clock in the main page.
@@ -307,8 +308,20 @@ def saveComp(self, compartimiento, medicamento, hora, cant):
 def compCerrar(conf, self, compartimiento, medicamento, hora, cant):
 	writeFile(compartimiento, medicamento, hora, cant)
 	#Abrir CompartimientoFisico(compartimiento)
+	#temporizador(compartimiento, medicamento, hora, cant)
 	self.destroy()
 	conf.destroy()	
+
+def temporizador(compartimiento, medicamento, hora, cant):
+	t = Timer(10, lambda: timeout(compartimiento, medicamento, cant))
+	t.start()
+	
+def timeout(compartimiento, medicamento, cant):
+	print("dentro")
+	print(compartimiento)
+	print(medicamento)
+	print(cant)
+	#Abrir el compartimiento fisico
 
 def writeFile(comp, med, hora, cant):
 	lineas = [med, hora, cant]
