@@ -1,5 +1,3 @@
-#http://svn.python.org/projects/sandbox/trunk/ttk-gsoc/samples/ttkcalendar.py
-#https://www.youtube.com/watch?v=FrS1lLb4HgA
 import sys
 import os
 from cal import *
@@ -73,6 +71,85 @@ def days():
 	btn5 = Button(days, text="Compartimiento 5", fg="white", bg="black", pady="25", command = c5).pack()
 	Label(days, text="___________________________________________", fg="black", pady=10).pack()	
 	salir = Button(days, text="Regresar", fg="white", bg="blue", command= lambda: exitFunction(days)).pack()
+
+def horarios():
+	horarios= Tkinter.Toplevel(root)
+	horarios.geometry("340x530")
+	horarios.geometry("+%d+%d" % (0,0))
+	#c5.overrideredirect(1)
+	Label(horarios, text="Horarios", font=("bold", 12, ), fg="blue", pady= 10).pack()
+	Label(horarios, text="Compartimiento 1", font=("bold", 10, ), fg="blue", pady= 5).pack()
+	f = open ('c1.txt','r')
+	mensaje = f.read()
+	lim = mensaje.find("\n")
+	med = mensaje[0:lim]
+	seg = mensaje[lim+1: 30]
+	lim2 = seg.find("\n")
+	hora = seg[0:lim2]
+	ter = mensaje[lim2+lim+2: 30]
+	lim3 = ter.find("\n")
+	cant = ter[0:lim3]
+	Label(horarios, text="Medicina: "+med + "\nHoras: "+hora+"     Pastillas: "+cant, font=("bold", 8, ), bg="white" ,fg="black", pady= 5).pack()
+	f.close()
+
+	Label(horarios, text="Compartimiento 2", font=("bold", 10, ), fg="blue", pady= 10).pack()
+	f = open ('c2.txt','r')
+	mensaje = f.read()
+	lim = mensaje.find("\n")
+	med = mensaje[0:lim]
+	seg = mensaje[lim+1: 30]
+	lim2 = seg.find("\n")
+	hora = seg[0:lim2]
+	ter = mensaje[lim2+lim+2: 30]
+	lim3 = ter.find("\n")
+	cant = ter[0:lim3]
+	Label(horarios, text="Medicina: "+med + "\nHoras: "+hora+"     Pastillas: "+cant, font=("bold", 8, ), bg="white" ,fg="black", pady= 5).pack()
+	f.close()	
+
+	Label(horarios, text="Compartimiento 3", font=("bold", 10, ), fg="blue", pady= 10).pack()
+	f = open ('c3.txt','r')
+	mensaje = f.read()
+	lim = mensaje.find("\n")
+	med = mensaje[0:lim]
+	seg = mensaje[lim+1: 30]
+	lim2 = seg.find("\n")
+	hora = seg[0:lim2]
+	ter = mensaje[lim2+lim+2: 30]
+	lim3 = ter.find("\n")
+	cant = ter[0:lim3]
+	Label(horarios, text="Medicina: "+med + "\nHoras: "+hora+"     Pastillas: "+cant, font=("bold", 8, ), bg="white" ,fg="black", pady= 5).pack()
+	f.close()	
+
+	Label(horarios, text="Compartimiento 4", font=("bold", 10, ), fg="blue", pady= 10).pack()
+	f = open ('c4.txt','r')
+	mensaje = f.read()
+	lim = mensaje.find("\n")
+	med = mensaje[0:lim]
+	seg = mensaje[lim+1: 30]
+	lim2 = seg.find("\n")
+	hora = seg[0:lim2]
+	ter = mensaje[lim2+lim+2: 30]
+	lim3 = ter.find("\n")
+	cant = ter[0:lim3]
+	Label(horarios, text="Medicina: "+med + "\nHoras: "+hora+"     Pastillas: "+cant, font=("bold", 8, ), bg="white" , fg="black", pady= 5).pack()
+	f.close()	
+
+	Label(horarios, text="Compartimiento 5", font=("bold", 10, ), fg="blue", pady= 10).pack()
+	f = open ('c5.txt','r')
+	mensaje = f.read()
+	lim = mensaje.find("\n")
+	med = mensaje[0:lim]
+	seg = mensaje[lim+1: 30]
+	lim2 = seg.find("\n")
+	hora = seg[0:lim2]
+	ter = mensaje[lim2+lim+2: 30]
+	lim3 = ter.find("\n")
+	cant = ter[0:lim3]
+	Label(horarios, text="Medicina: "+med + "\nHoras: "+hora+"     Pastillas: "+cant, font=("bold", 8, ), bg="white" ,fg="black", pady= 5).pack()
+	f.close()		
+
+	Label(horarios, text="\n___________________________________________", fg="black", pady=10).pack()
+	salir = Button(horarios, text="Regresar", fg="white", bg="blue", command= lambda: exitFunction(horarios)).pack()
 
 def c1():
 	c1= Tkinter.Toplevel(root)
@@ -217,10 +294,10 @@ def exitFunction(self):
 
 def saveComp(self, compartimiento, medicamento, hora, cant):
 	#tkMessageBox.showinfo("Timencan", "Guardar")
-	print "Comp: %d" %(compartimiento)
-	print "med: " + medicamento
-	print "Hora: " + hora	
-	print "Cantidad: " + cant
+	#print "Comp: %d" %(compartimiento)
+	#print "med: " + medicamento
+	#print "Hora: " + hora	
+	#print "Cantidad: " + cant
 	writeFile(compartimiento, medicamento, hora, cant)
 	self.destroy()
 
@@ -279,6 +356,6 @@ Label(root, text="___________________________________________", fg="black", pady
 Label(root, text="Opciones", fg="blue", font=("bold", 12), pady= 5).pack()
 btn1 = Button(root, text="Reprogramar pastillero",  fg="white", bg="blue", pady="8", command = days).pack()
 btn2 = Button(root, text="      Agregar alarma      ",  fg="white", bg="blue", pady="8",command = alarm).pack()
-btn3 = Button(root, text="      Ver mis horarios     ", fg="white", bg="blue", pady="8").pack()
+btn3 = Button(root, text="      Ver mis horarios     ", fg="white", bg="blue", pady="8", command = horarios).pack()
 
 mainloop()
