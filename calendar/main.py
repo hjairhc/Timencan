@@ -300,12 +300,13 @@ def saveComp(self, compartimiento, medicamento, hora, cant):
 	conf.wm_attributes("-topmost", 1)	
 	Label(conf, text="\n\n\n\n\n\n\n\n\n\nGuardar los cambios", fg="black", pady=10).pack()
 	conf.wm_attributes("-topmost", 1)
-	confirmar = Button(conf, text="Confirmar", fg="white", bg="blue", pady="15", command =lambda: escribirYCerrar(self, conf, compartimiento, medicamento, hora, cant)).pack()
+	confirmar = Button(conf, text="Confirmar", fg="white", bg="blue", pady="15", command =lambda: compCerrar(self, conf, compartimiento, medicamento, hora, cant)).pack()
 	cancelar = Button(conf, text="Cancelar", fg="white", bg="blue", pady="15", command=lambda: exitFunction(conf)).pack()	
 	
 
-def escribirYCerrar(conf, self, compartimiento, medicamento, hora, cant):
+def compCerrar(conf, self, compartimiento, medicamento, hora, cant):
 	writeFile(compartimiento, medicamento, hora, cant)
+	#Abrir CompartimientoFisico(compartimiento)
 	self.destroy()
 	conf.destroy()	
 
