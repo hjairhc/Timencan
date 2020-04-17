@@ -308,20 +308,49 @@ def saveComp(self, compartimiento, medicamento, hora, cant):
 def compCerrar(conf, self, compartimiento, medicamento, hora, cant):
 	writeFile(compartimiento, medicamento, hora, cant)
 	#Abrir CompartimientoFisico(compartimiento)
-	#temporizador(compartimiento, medicamento, hora, cant)
+	temporizador(compartimiento, medicamento, hora, cant)
 	self.destroy()
 	conf.destroy()	
 
 def temporizador(compartimiento, medicamento, hora, cant):
-	t = Timer(10, lambda: timeout(compartimiento, medicamento, cant))
+	tiempo = int(hora)# * 3600;
+	t = Timer(tiempo, lambda: timeout(hora, compartimiento, medicamento, cant))
 	t.start()
+	#timeout(hora, compartimiento, medicamento, cant)
 	
-def timeout(compartimiento, medicamento, cant):
-	print("dentro")
-	print(compartimiento)
-	print(medicamento)
-	print(cant)
-	#Abrir el compartimiento fisico
+	
+def timeout(hora, compartimiento, medicamento, cant):
+	time= Tkinter.Toplevel(root)
+	time.geometry("340x530")
+	time.geometry("+%d+%d" % (0,0))
+	time.overrideredirect(1)
+	time.wm_attributes("-topmost", 1)
+	Label(time, text="Abrir Pastillero", font=("bold", 12), fg="blue", pady= 12).pack()
+	Label(time, text="\n\n\n\n\nSe abrira el compartimiento: "+ str(compartimiento), font=("bold", 10), fg="black", pady=10).pack()	
+	Label(time, text="Tomar Medicina: "+medicamento, font=("bold", 10), fg="black", pady=10).pack()
+	Label(time, text="Tu dosis son: "+cant + " Pastillas", font=("bold", 10), fg="black", pady=10).pack()
+	time.wm_attributes("-topmost", 1)
+	Label(time, text="\n\n\n___________________________________________", fg="black", pady=10).pack()
+	abrir = Button(time, text="Abrir pastillero", fg="white", bg="blue", pady="10", command =lambda: cerrarPastillero(time, hora, compartimiento, medicamento, cant)).pack()
+	
+def cerrarPastillero(time, hora, compartimiento, medicamento, cant):
+	time.destroy()
+	clos= Tkinter.Toplevel(root)
+	clos.geometry("340x530")
+	clos.geometry("+%d+%d" % (0,0))
+	clos.overrideredirect(1)
+	clos.wm_attributes("-topmost", 1)
+	Label(clos, text="Cerrar Pastillero", font=("bold", 12), fg="blue", pady= 12).pack()
+	Label(clos, text="\n\n\n\n\n\n\nSe cerrara el compartimiento: "+ str(compartimiento), font=("bold", 10), fg="black", pady=10).pack()	
+	Label(clos, text="La siguiente alarma es en: "+hora+" horas.", font=("bold", 10), fg="black", pady=10).pack()	
+	Label(clos, text="\n\n\n___________________________________________", fg="black", pady=10).pack()
+	abrir = Button(clos, text="Cerrar Pastillero", fg="white", bg="blue", pady="10", command =lambda: reiniciarTimer(clos, hora, compartimiento, medicamento, cant)).pack()	
+
+def reiniciarTimer(clos, hora, compartimiento, medicamento, cant):
+	clos.destroy()
+	tiempo = int(hora)# * 3600;
+	t = Timer(tiempo, lambda: timeout(hora, compartimiento, medicamento, cant))
+	t.start()
 
 def writeFile(comp, med, hora, cant):
 	lineas = [med, hora, cant]
