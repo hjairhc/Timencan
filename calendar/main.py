@@ -21,9 +21,7 @@ def tick():
 
 def alarm():
 	alarm = Tkinter.Toplevel(root)
-	alarm.geometry("340x530")
-	alarm.geometry("+%d+%d" % (0,0))
-	alarm.overrideredirect(1)
+	alarm.geometry("340x530+0+0")
 	Label(alarm, text="Programar alarma", font=("bold", 12, ), fg="blue", pady= 10).pack()
 	Label(alarm, text="Selecciona dia.", pady= 6).pack()
 
@@ -60,9 +58,7 @@ def alarm():
 
 def days():
 	days = Tkinter.Toplevel(root)
-	days.geometry("340x530")
-	days.geometry("+%d+%d" % (0,0))
-	days.overrideredirect(1)
+	days.geometry("340x530+0+0")
 	Label(days, text="Reprogramar Pastillero", font=("bold", 12, ), fg="blue", pady= 10).pack()
 	Label(days, text="Selecciona uno de los 5 compartimientos", pady= 10).pack()
 	btn1 = Button(days, text="Compartimiento 1", fg="white", bg="green3", pady="25", command = c1).pack()
@@ -75,9 +71,7 @@ def days():
 
 def horarios():
 	horarios= Tkinter.Toplevel(root)
-	horarios.geometry("340x530")
-	horarios.geometry("+%d+%d" % (0,0))
-	horarios.overrideredirect(1)
+	horarios.geometry("340x530+0+0")
 	Label(horarios, text="Horarios", font=("bold", 12, ), fg="blue", pady= 10).pack()
 	Label(horarios, text="Compartimiento 1", font=("bold", 10, ), fg="blue", pady= 5).pack()
 	f = open ('c1.txt','r')
@@ -154,9 +148,7 @@ def horarios():
 
 def c1():
 	c1= Tkinter.Toplevel(root)
-	c1.geometry("340x530")
-	c1.geometry("+%d+%d" % (0,0))
-	c1.overrideredirect(1)
+	c1.geometry("340x530+0+0")
 	Label(c1, text="Compartimiento 1", font=("bold", 12, ), fg="blue", pady= 10).pack()
 	Label(c1, text="Llena los datos para programar los horarios.", pady= 10).pack()
 	Label(c1, text=" ", fg="black", pady=10).pack()
@@ -182,9 +174,7 @@ def c1():
 
 def c2():
 	c2= Tkinter.Toplevel(root)
-	c2.geometry("340x530")
-	c2.geometry("+%d+%d" % (0,0))
-	c2.overrideredirect(1)
+	c2.geometry("340x530+0+0")
 	Label(c2, text="Compartimiento 2", font=("bold", 12, ), fg="blue", pady= 10).pack()
 	Label(c2, text="Llena los datos para programar los horarios.", pady= 10).pack()
 	Label(c2, text=" ", fg="black", pady=10).pack()
@@ -210,9 +200,7 @@ def c2():
 
 def c3():
 	c3= Tkinter.Toplevel(root)
-	c3.geometry("340x530")
-	c3.geometry("+%d+%d" % (0,0))
-	c3.overrideredirect(1)
+	c3.geometry("340x530+0+0")
 	Label(c3, text="Compartimiento 3", font=("bold", 12, ), fg="blue", pady= 10).pack()
 	Label(c3, text="Llena los datos para programar los horarios.", pady= 10).pack()
 	Label(c3, text=" ", fg="black", pady=10).pack()
@@ -238,9 +226,7 @@ def c3():
 
 def c4():
 	c4= Tkinter.Toplevel(root)
-	c4.geometry("340x530")
-	c4.geometry("+%d+%d" % (0,0))
-	c4.overrideredirect(1)
+	c4.geometry("340x530+0+0")
 	Label(c4, text="Compartimiento 4", font=("bold", 12, ), fg="blue", pady= 10).pack()
 	Label(c4, text="Llena los datos para programar los horarios.", pady= 10).pack()
 	Label(c4, text=" ", fg="black", pady=10).pack()
@@ -266,9 +252,7 @@ def c4():
 
 def c5():
 	c5= Tkinter.Toplevel(root)
-	c5.geometry("340x530")
-	c5.geometry("+%d+%d" % (0,0))
-	c5.overrideredirect(1)
+	c5.geometry("340x530+0+0")
 	Label(c5, text="Compartimiento 5", font=("bold", 12, ), fg="blue", pady= 10).pack()
 	Label(c5, text="Llena los datos para programar los horarios.", pady= 10).pack()
 	Label(c5, text=" ", fg="black", pady=10).pack()
@@ -290,15 +274,12 @@ def c5():
 	Label(c5, text="\n\n\n___________________________________________", fg="black", pady=10).pack()
 	salir = Button(c5, text="Regresar", fg="white", bg="blue", command= lambda: exitFunction(c5)).pack()
 
-def exitFunction(self):
-	self.destroy()
+def exitFunction(ventana):
+	ventana.destroy()
 
 def saveComp(self, compartimiento, medicamento, hora, cant):
 	conf= Tkinter.Toplevel(root)
-	conf.geometry("340x530")
-	conf.geometry("+%d+%d" % (0,0))
-	conf.overrideredirect(1)
-	conf.wm_attributes("-topmost", 1)	
+	conf.geometry("340x530+0+0")
 	Label(conf, text="\n\n\n\n\n\n\n\n\n\nGuardar los cambios", fg="black", pady=10).pack()
 	conf.wm_attributes("-topmost", 1)
 	confirmar = Button(conf, text="Confirmar", fg="white", bg="blue", pady="15", command =lambda: compCerrar(self, conf, compartimiento, medicamento, hora, cant)).pack()
@@ -313,33 +294,26 @@ def compCerrar(conf, self, compartimiento, medicamento, hora, cant):
 	conf.destroy()	
 
 def temporizador(compartimiento, medicamento, hora, cant):
-	tiempo = int(hora)# * 3600;
+	tiempo = int(hora)*2# * 3600;
 	t = Timer(tiempo, lambda: timeout(hora, compartimiento, medicamento, cant))
 	t.start()
 	#timeout(hora, compartimiento, medicamento, cant)
 	
 	
 def timeout(hora, compartimiento, medicamento, cant):
-	time= Tkinter.Toplevel(root)
-	time.geometry("340x530")
-	time.geometry("+%d+%d" % (0,0))
-	time.overrideredirect(1)
-	time.wm_attributes("-topmost", 1)
-	Label(time, text="Abrir Pastillero", font=("bold", 12), fg="blue", pady= 12).pack()
-	Label(time, text="\n\n\n\n\nSe abrira el compartimiento: "+ str(compartimiento), font=("bold", 10), fg="black", pady=10).pack()	
-	Label(time, text="Tomar Medicina: "+medicamento, font=("bold", 10), fg="black", pady=10).pack()
-	Label(time, text="Tu dosis son: "+cant + " Pastillas", font=("bold", 10), fg="black", pady=10).pack()
-	time.wm_attributes("-topmost", 1)
-	Label(time, text="\n\n\n___________________________________________", fg="black", pady=10).pack()
-	abrir = Button(time, text="Abrir pastillero", fg="white", bg="blue", pady="10", command =lambda: cerrarPastillero(time, hora, compartimiento, medicamento, cant)).pack()
+	tim= Tkinter.Toplevel()
+	tim.geometry("340x530+0+0")
+	Label(tim, text="Abrir Pastillero", font=("bold", 12), fg="blue", pady= 12).pack()
+	Label(tim, text="\n\n\n\n\nSe abrira el compartimiento: "+ str(compartimiento), font=("bold", 10), fg="black", pady=10).pack()	
+	Label(tim, text="Tomar Medicina: "+medicamento, font=("bold", 10), fg="black", pady=10).pack()
+	Label(tim, text="Tu dosis son: "+cant + " Pastillas", font=("bold", 10), fg="black", pady=10).pack()
+	Label(tim, text="\n\n\n___________________________________________", fg="black", pady=10).pack()
+	abrir = Button(tim, text="Abrir pastillero", fg="white", bg="blue", pady="10", command =lambda: cerrarPastillero(tim, hora, compartimiento, medicamento, cant)).pack()
 	
-def cerrarPastillero(time, hora, compartimiento, medicamento, cant):
-	time.destroy()
+def cerrarPastillero(tim, hora, compartimiento, medicamento, cant):
+	tim.destroy()
 	clos= Tkinter.Toplevel(root)
-	clos.geometry("340x530")
-	clos.geometry("+%d+%d" % (0,0))
-	clos.overrideredirect(1)
-	clos.wm_attributes("-topmost", 1)
+	clos.geometry("340x530+0+0")
 	Label(clos, text="Cerrar Pastillero", font=("bold", 12), fg="blue", pady= 12).pack()
 	Label(clos, text="\n\n\n\n\n\n\nSe cerrara el compartimiento: "+ str(compartimiento), font=("bold", 10), fg="black", pady=10).pack()	
 	Label(clos, text="La siguiente alarma es en: "+hora+" horas.", font=("bold", 10), fg="black", pady=10).pack()	
@@ -348,7 +322,7 @@ def cerrarPastillero(time, hora, compartimiento, medicamento, cant):
 
 def reiniciarTimer(clos, hora, compartimiento, medicamento, cant):
 	clos.destroy()
-	tiempo = int(hora)# * 3600;
+	tiempo = int(hora)*2# * 3600;
 	t = Timer(tiempo, lambda: timeout(hora, compartimiento, medicamento, cant))
 	t.start()
 
@@ -362,9 +336,7 @@ def writeFile(comp, med, hora, cant):
 
 def saveAlarm(self, dia, hora, c1, c2, c3, c4, c5):
 	conf= Tkinter.Toplevel(root)
-	conf.geometry("340x530")
-	conf.geometry("+%d+%d" % (0,0))
-	conf.overrideredirect(1)
+	conf.geometry("340x530+0+0")
 	conf.wm_attributes("-topmost", 1)
 	Label(conf, text="\n\n\n\n\n\n\n\n\n\nGuardar los cambios", fg="black", pady=10).pack()
 	conf.wm_attributes("-topmost", 1)
