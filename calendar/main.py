@@ -8,6 +8,7 @@ import time
 from threading import Timer
 import os
 
+
 #Function for the clock in the main page.
 def tick():
     global time1
@@ -20,6 +21,7 @@ def tick():
     clock.after(200, tick)
 
 def alarm():
+
 	alarm = Tkinter.Toplevel(root)
 	alarm.geometry("340x530+0+0")
 	Label(alarm, text="Programar alarma", font=("bold", 12, ), fg="blue", pady= 10).pack()
@@ -59,13 +61,42 @@ def alarm():
 def days():
 	days = Tkinter.Toplevel(root)
 	days.geometry("340x530+0+0")
+	f = open ('c1.txt','r')
+	mensaje = f.read()
+	lim = mensaje.find("\n")
+	name1 = mensaje[0:lim]
+	f.close()
+
+	f = open ('c2.txt','r')
+	mensaje = f.read()
+	lim = mensaje.find("\n")
+	name2 = mensaje[0:lim]
+	f.close()
+
+	f = open ('c3.txt','r')
+	mensaje = f.read()
+	lim = mensaje.find("\n")
+	name3 = mensaje[0:lim]
+	f.close()
+
+	f = open ('c4.txt','r')
+	mensaje = f.read()
+	lim = mensaje.find("\n")
+	name4 = mensaje[0:lim]
+	f.close()
+
+	f = open ('c5.txt','r')
+	mensaje = f.read()
+	lim = mensaje.find("\n")
+	name5 = mensaje[0:lim]
+	f.close()
 	Label(days, text="Reprogramar Pastillero", font=("bold", 12, ), fg="blue", pady= 10).pack()
 	Label(days, text="Selecciona uno de los 5 compartimientos", pady= 10).pack()
-	btn1 = Button(days, text="Compartimiento 1", fg="white", bg="green3", pady="25", command = c1).pack()
-	btn2 = Button(days, text="Compartimiento 2", fg="white", bg="deep sky blue", pady="25", command = c2).pack()
-	btn3 = Button(days, text="Compartimiento 3", fg="white", bg="red", pady="25", command = c3).pack()
-	btn4 = Button(days, text="Compartimiento 4", fg="white", bg="blue violet", pady="25", command = c4).pack()
-	btn5 = Button(days, text="Compartimiento 5", fg="white", bg="black", pady="25", command = c5).pack()
+	btn1 = Button(days, text=name1, fg="white", width="20",bg="green3", pady="25", command = lambda: c1(days)).pack()
+	btn2 = Button(days, text=name2, fg="white", width="20",bg="deep sky blue", pady="25", command = lambda: c2(days)).pack()
+	btn3 = Button(days, text=name3, fg="white", width="20",bg="red", pady="25", command = lambda: c3(days)).pack()
+	btn4 = Button(days, text=name4, fg="white", width="20",bg="blue violet", pady="25", command = lambda: c4(days)).pack()
+	btn5 = Button(days, text=name5, fg="white", width="20",bg="black", pady="25", command = lambda: c5(days)).pack()
 	Label(days, text="___________________________________________", fg="black", pady=10).pack()	
 	salir = Button(days, text="Regresar", fg="white", bg="blue", command= lambda: exitFunction(days)).pack()
 
@@ -146,10 +177,15 @@ def horarios():
 	Label(horarios, text="\n___________________________________________", fg="black", pady=10).pack()
 	salir = Button(horarios, text="Regresar", fg="white", bg="blue", command= lambda: exitFunction(horarios)).pack()
 
-def c1():
+def c1(days):
+	f = open ('c1.txt','r')
+	mensaje = f.read()
+	lim = mensaje.find("\n")
+	name1 = mensaje[0:lim]
+	f.close()
 	c1= Tkinter.Toplevel(root)
 	c1.geometry("340x530+0+0")
-	Label(c1, text="Compartimiento 1", font=("bold", 12, ), fg="blue", pady= 8).pack()
+	Label(c1, text=name1, font=("bold", 12, ), fg="blue", pady= 8).pack()
 	Label(c1, text="Llena los datos para programar los horarios.", pady= 8).pack()
 	#Label(c1, text=" ", fg="black", pady=10).pack()
 	Label(c1, text="Nombre del medicamento", fg="black", pady=8).pack()
@@ -168,17 +204,22 @@ def c1():
 	cantidad.set(CAN[0])
 	w = apply(OptionMenu, (c1, cantidad) + tuple(CAN)).pack()
 	Label(c1, text=" ", fg="black").pack()
-	guardar = Button(c1, text="Guardar alarma", fg="white", bg="blue", command =lambda: saveComp(c1, 1, v.get(), variable.get(), cantidad.get())).pack()
+	guardar = Button(c1, text="Guardar alarma", fg="white", bg="blue", command =lambda: saveComp(c1, 1, v.get(), variable.get(), cantidad.get(), days)).pack()
 	Label(c1, text=" ___________________________________________", fg="black", pady="12").pack()
 	Label(c1, text=" Presiona para rellenar el compartimiento", fg="black", pady="8").pack()
 	rellenar = Button(c1, text="Abrir", fg="white", bg="blue", command=rellenarPas).pack()
 	Label(c1, text="\n___________________________________________", fg="black", pady=10).pack()
 	salir = Button(c1, text="Regresar", fg="white", bg="blue", command= lambda: exitFunction(c1)).pack()
 
-def c2():
+def c2(days):
+	f = open ('c2.txt','r')
+	mensaje = f.read()
+	lim = mensaje.find("\n")
+	name2 = mensaje[0:lim]
+	f.close()
 	c2= Tkinter.Toplevel(root)
 	c2.geometry("340x530+0+0")
-	Label(c2, text="Compartimiento 2", font=("bold", 12, ), fg="blue", pady= 8).pack()
+	Label(c2, text=name2, font=("bold", 12, ), fg="blue", pady= 8).pack()
 	Label(c2, text="Llena los datos para programar los horarios.", pady= 8).pack()
 	#Label(c2, text=" ", fg="black", pady=10).pack()
 	Label(c2, text="Nombre del medicamento", fg="black", pady=8).pack()
@@ -197,17 +238,22 @@ def c2():
 	cantidad.set(CAN[0])
 	w = apply(OptionMenu, (c2, cantidad) + tuple(CAN)).pack()
 	Label(c2, text=" ", fg="black").pack()
-	guardar = Button(c2, text="Guardar alarma", fg="white", bg="blue", command =lambda: saveComp(c2, 2, v.get(), variable.get(), cantidad.get())).pack()
+	guardar = Button(c2, text="Guardar alarma", fg="white", bg="blue", command =lambda: saveComp(c2, 2, v.get(), variable.get(), cantidad.get(),days)).pack()
 	Label(c2, text=" ___________________________________________", fg="black", pady="12").pack()
 	Label(c2, text=" Presiona para rellenar el compartimiento", fg="black", pady="8").pack()
 	rellenar = Button(c2, text="Abrir", fg="white", bg="blue", command=rellenarPas).pack()	
 	Label(c2, text="\n___________________________________________", fg="black", pady=10).pack()
 	salir = Button(c2, text="Regresar", fg="white", bg="blue", command= lambda: exitFunction(c2)).pack()
 
-def c3():
+def c3(days):
+	f = open ('c3.txt','r')
+	mensaje = f.read()
+	lim = mensaje.find("\n")
+	name3 = mensaje[0:lim]
+	f.close()
 	c3= Tkinter.Toplevel(root)
 	c3.geometry("340x530+0+0")
-	Label(c3, text="Compartimiento 3", font=("bold", 12, ), fg="blue", pady= 8).pack()
+	Label(c3, text=name3, font=("bold", 12, ), fg="blue", pady= 8).pack()
 	Label(c3, text="Llena los datos para programar los horarios.", pady= 8).pack()
 	#Label(c3, text=" ", fg="black", pady=10).pack()
 	Label(c3, text="Nombre del medicamento", fg="black", pady=8).pack()
@@ -226,17 +272,22 @@ def c3():
 	cantidad.set(CAN[0])
 	w = apply(OptionMenu, (c3, cantidad) + tuple(CAN)).pack()
 	Label(c3, text=" ", fg="black").pack()
-	guardar = Button(c3, text="Guardar alarma", fg="white", bg="blue", command =lambda: saveComp(c3, 3, v.get(), variable.get(), cantidad.get())).pack()
+	guardar = Button(c3, text="Guardar alarma", fg="white", bg="blue", command =lambda: saveComp(c3, 3, v.get(), variable.get(), cantidad.get(), days)).pack()
 	Label(c3, text=" ___________________________________________", fg="black", pady="12").pack()
 	Label(c3, text=" Presiona para rellenar el compartimiento", fg="black", pady="8").pack()
 	rellenar = Button(c3, text="Abrir", fg="white", bg="blue", command=rellenarPas).pack()	
 	Label(c3, text="\n___________________________________________", fg="black", pady=10).pack()
 	salir = Button(c3, text="Regresar", fg="white", bg="blue", command= lambda: exitFunction(c3)).pack()
 
-def c4():
+def c4(days):
+	f = open ('c4.txt','r')
+	mensaje = f.read()
+	lim = mensaje.find("\n")
+	name4 = mensaje[0:lim]
+	f.close()
 	c4= Tkinter.Toplevel(root)
 	c4.geometry("340x530+0+0")
-	Label(c4, text="Compartimiento 4", font=("bold", 12, ), fg="blue", pady= 8).pack()
+	Label(c4, text=name4, font=("bold", 12, ), fg="blue", pady= 8).pack()
 	Label(c4, text="Llena los datos para programar los horarios.", pady= 8).pack()
 	#Label(c4, text=" ", fg="black", pady=10).pack()
 	Label(c4, text="Nombre del medicamento", fg="black", pady=8).pack()
@@ -255,17 +306,22 @@ def c4():
 	cantidad.set(CAN[0])
 	w = apply(OptionMenu, (c4, cantidad) + tuple(CAN)).pack()
 	Label(c4, text=" ", fg="black").pack()
-	guardar = Button(c4, text="Guardar alarma", fg="white", bg="blue", command =lambda: saveComp(c4, 4, v.get(), variable.get(), cantidad.get())).pack()
+	guardar = Button(c4, text="Guardar alarma", fg="white", bg="blue", command =lambda: saveComp(c4, 4, v.get(), variable.get(), cantidad.get(), days)).pack()
 	Label(c4, text=" ___________________________________________", fg="black", pady="12").pack()
 	Label(c4, text=" Presiona para rellenar el compartimiento", fg="black", pady="8").pack()
 	rellenar = Button(c4, text="Abrir", fg="white", bg="blue", command=rellenarPas).pack()	
 	Label(c4, text="\n___________________________________________", fg="black", pady=10).pack()
 	salir = Button(c4, text="Regresar", fg="white", bg="blue", command= lambda: exitFunction(c4)).pack()
 
-def c5():
+def c5(days):
+	f = open ('c5.txt','r')
+	mensaje = f.read()
+	lim = mensaje.find("\n")
+	name5 = mensaje[0:lim]
+	f.close()
 	c5= Tkinter.Toplevel(root)
 	c5.geometry("340x530+0+0")
-	Label(c5, text="Compartimiento 5", font=("bold", 12, ), fg="blue", pady= 8).pack()
+	Label(c5, text=name5, font=("bold", 12, ), fg="blue", pady= 8).pack()
 	Label(c5, text="Llena los datos para programar los horarios.", pady= 8).pack()
 	#Label(c5, text=" ", fg="black", pady=10).pack()
 	Label(c5, text="Nombre del medicamento", fg="black", pady=8).pack()
@@ -282,7 +338,7 @@ def c5():
 	cantidad.set(CAN[0])
 	w = apply(OptionMenu, (c5, cantidad) + tuple(CAN)).pack()
 	Label(c5, text=" ", fg="black").pack()
-	guardar = Button(c5, text="Guardar alarma", fg="white", bg="blue", command =lambda: saveComp(c5, 5, v.get(), variable.get(), cantidad.get())).pack()
+	guardar = Button(c5, text="Guardar alarma", fg="white", bg="blue", command =lambda: saveComp(c5, 5, v.get(), variable.get(), cantidad.get(), days)).pack()
 	Label(c5, text=" ___________________________________________", fg="black", pady="12").pack()
 	Label(c5, text=" Presiona para rellenar el compartimiento", fg="black", pady="8").pack()
 	rellenar = Button(c5, text="Abrir", fg="white", bg="blue", command=rellenarPas).pack()	
@@ -300,21 +356,23 @@ def rellenarPas():
 def exitFunction(ventana):
 	ventana.destroy()
 
-def saveComp(self, compartimiento, medicamento, hora, cant):
+def saveComp(self, compartimiento, medicamento, hora, cant, days):
 	conf= Tkinter.Toplevel(root)
 	conf.geometry("340x530+0+0")
 	Label(conf, text="\n\n\n\n\n\n\n\n\n\nGuardar los cambios", fg="black", pady=10).pack()
 	conf.wm_attributes("-topmost", 1)
-	confirmar = Button(conf, text="Confirmar", fg="white", bg="blue", pady="15", command =lambda: compCerrar(self, conf, compartimiento, medicamento, hora, cant)).pack()
-	cancelar = Button(conf, text="Cancelar", fg="white", bg="blue", pady="15", command=lambda: exitFunction(conf)).pack()	
+	confirmar = Button(conf, text="Confirmar", width="15", fg="white", bg="blue", pady="15", command =lambda: compCerrar(self, conf, compartimiento, medicamento, hora, cant, days)).pack()
+	cancelar = Button(conf, text="Cancelar", width="15", fg="white", bg="blue", pady="15", command=lambda: exitFunction(conf)).pack()	
 	
 
-def compCerrar(conf, self, compartimiento, medicamento, hora, cant):
+def compCerrar(conf, self, compartimiento, medicamento, hora, cant, da):
 	writeFile(compartimiento, medicamento, hora, cant)
 	#Abrir CompartimientoFisico(compartimiento)
 	temporizador(compartimiento, medicamento, hora, cant)
 	self.destroy()
+	da.destroy()
 	conf.destroy()	
+	days()
 
 def temporizador(compartimiento, medicamento, hora, cant):
 	tiempo = int(hora)*2# * 3600;
@@ -344,7 +402,7 @@ def cerrarPastillero(tim, hora, compartimiento, medicamento, cant):
 	Label(clos, text="La siguiente alarma es en: ", font=("bold", 10), fg="black", pady=10).pack()
 	Label(clos, text=hora+" horas.", font=("bold", 10), bg="white",fg="black", pady=10).pack()	
 	Label(clos, text="\n\n\n___________________________________________", fg="black", pady=10).pack()
-	abrir = Button(clos, text="Cerrar Pastillero", fg="white", bg="blue", pady="10", command =lambda: reiniciarTimer(clos, hora, compartimiento, medicamento, cant)).pack()
+	abrir = Button(clos, text="Cerrar Pastillero", width="15", fg="white", bg="blue", pady="10", command =lambda: reiniciarTimer(clos, hora, compartimiento, medicamento, cant)).pack()
 
 
 def reiniciarTimer(clos, hora, compartimiento, medicamento, cant):
@@ -367,8 +425,8 @@ def saveAlarm(self, dia, hora, c1, c2, c3, c4, c5):
 	conf.wm_attributes("-topmost", 1)
 	Label(conf, text="\n\n\n\n\n\n\n\n\n\nGuardar los cambios", fg="black", pady=10).pack()
 	conf.wm_attributes("-topmost", 1)
-	confirmar = Button(conf, text="Confirmar", fg="white", bg="blue", pady="15", command =lambda: escribirAlarma(self, conf, dia, hora, c1, c2, c3, c4, c5)).pack()
-	cancelar = Button(conf, text="Cancelar", fg="white", bg="blue", pady="15", command=lambda: exitFunction(conf)).pack()	
+	confirmar = Button(conf, text="Confirmar", width="15", fg="white", bg="blue", pady="15", command =lambda: escribirAlarma(self, conf, dia, hora, c1, c2, c3, c4, c5)).pack()
+	cancelar = Button(conf, text="Cancelar", width="15", fg="white", bg="blue", pady="15", command=lambda: exitFunction(conf)).pack()	
 
 def escribirAlarma(conf, self, dia, hora, c1, c2, c3, c4, c5):
 	writeAlarm(dia, hora, c1, c2, c3, c4, c5)
@@ -385,6 +443,7 @@ def writeAlarm(dia, hora, c1, c2, c3, c4, c5):
 	fichero.close() 
 		
 
+
 #Main
 root=Tk()
 root.title('Timencan')
@@ -396,7 +455,6 @@ time1 = ''
 Label(root, text="Hora actual", fg="blue", font=("bold", 12), pady= 5).pack()
 clock = Label(root, font=('times', 35, 'bold'), bg='white')
 clock.pack()
-
 #Call the clock
 tick()
 Label(root, text="___________________________________________", fg="black", pady=5).pack()
